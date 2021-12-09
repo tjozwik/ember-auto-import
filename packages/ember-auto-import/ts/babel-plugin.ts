@@ -15,17 +15,17 @@ function emberAutoImport(babel: typeof Babel) {
         if (arg.type === 'StringLiteral') {
           let cat = Package.categorize(arg.value);
           if (cat === 'dep') {
-            call.replaceWith(t.callExpression(t.identifier('emberAutoImportDynamic'), [arg]));
+            // call.replaceWith(t.callExpression(t.identifier('emberAutoImportDynamic'), [arg]));
           }
         } else if (arg.type === 'TemplateLiteral') {
           let cat = Package.categorize(arg.quasis[0].value.cooked!, true);
           if (cat === 'dep') {
-            call.replaceWith(
-              t.callExpression(t.identifier('emberAutoImportDynamic'), [
-                t.stringLiteral(arg.quasis.map(q => q.value.cooked).join('${e}')),
-                ...(arg.expressions as t.Expression[]),
-              ])
-            );
+            // call.replaceWith(
+            //   t.callExpression(t.identifier('emberAutoImportDynamic'), [
+            //     t.stringLiteral(arg.quasis.map(q => q.value.cooked).join('${e}')),
+            //     ...(arg.expressions as t.Expression[]),
+            //   ])
+            // );
           }
         }
       },
